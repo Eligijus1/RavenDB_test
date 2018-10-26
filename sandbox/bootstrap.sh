@@ -5,13 +5,6 @@ echo "127.0.0.1 vagrant.RavenDB.test.com  vagrant.RavenDB.test  localhost" | sud
 echo "::1       vagrant.RavenDB.test.com  vagrant.RavenDB.test  localhost" | sudo tee -a /etc/hosts
 echo "10.0.2.15 vagrant.RavenDB.test.com  vagrant.RavenDB.test  localhost" | sudo tee -a /etc/hosts
 
-#sudo ex +"%s@DPkg@//DPkg" -cwq /etc/apt/apt.conf.d/70debconf
-#sudo dpkg-reconfigure debconf -f noninteractive -p critical
-
-# Fixing languages:
-#sudo apt-get install -y language-pack-en-base
-#sudo LC_ALL=en_US.UTF-8 add-apt-repository ppa:ondrej/php
-
 # Update packages:
 apt-get update
 
@@ -27,23 +20,8 @@ fi
 
 # Installing PHP 7.2 and some extra libraries:
 sudo apt-get install -y php
-#sudo apt-get install -y php7.2
-#sudo apt-get install -y php7.1-xml 
-#sudo apt-get install -y php7.1-bz2
-#sudo apt-get install -y php7.1-dev
-#sudo apt-get install -y php7.1-sqlite3
-#sudo apt-get install -y php7.1-curl
-#sudo apt-get install -y php7.1-intl
-#sudo apt-get install -y php7.1-gd
-#sudo apt-get install -y php7.1-mbstring
-#sudo apt-get install -y php7.1-zip
-#sudo apt-get install -y php7.1-mysql
-#sudo apt-get install -y php7.1-bcmath
-#sudo apt-get install -y php7.1-xdebug
-#sudo apt-get install -y php7.1-apc
 
 # Check loaded PHP modules:
-#echo "Loaded PHP extensions:"
 #php -m
 
 # Add DNS to /etc/resolv.conf
@@ -59,9 +37,25 @@ sudo apt-get install -y git
 
 # Install RavenDB:
 cd /home/vagrant/
-wget --content-disposition https://hibernatingrhinos.com/downloads/RavenDB%20for%20Linux%20x64/41004
-wget --content-disposition https://hibernatingrhinos.com/downloads/RavenDB%20Tools%20for%20Linux%20x64/41004
-tar xvjf RavenDB-4.1.2-linux-x64.Tools.tar.bz2
-tar xvjf RavenDB-4.1.2-linux-x64.tar.bz2
+wget -O RavenDB.tar.bz2 https://hibernatingrhinos.com/downloads/RavenDB%20for%20Linux%20x64/latest
+tar xvjf RavenDB.tar.bz2
+rm -fr *.tar.bz2
+
+#Server/settings.json
+#{
+#    "ServerUrl": "http://172.28.128.13:8080",
+#    "PublicServerUrl": "http://vagrant.ravendb.test:8080",
+#    "Security.UnsecuredAccessAllowed": "PublicNetwork",
+#    "Setup.Mode": "Initial",
+#    "DataDir": "RavenData"
+#}
+
+#https://ravendb.net/docs/article-page/4.1/csharp/start/installation/setup-examples/aws-linux-vm
+#/etc/systemd/system/ravendb.service,
+#sudo systemctl daemon-reload
+#sudo systemctl enable ravendb.service
+#sudo systemctl start ravendb.service
+
+
 
 
