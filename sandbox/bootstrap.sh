@@ -59,5 +59,9 @@ sudo apt-get install -y git
 
 # Install RavenDB:
 cd /home/vagrant/
-wget https://hibernatingrhinos.com/downloads/RavenDB%20for%20Linux%20x64/41004
-wget https://hibernatingrhinos.com/downloads/RavenDB%20Tools%20for%20Linux%20x64/41004
+wget --content-disposition https://hibernatingrhinos.com/downloads/RavenDB%20for%20Linux%20x64/41004
+wget --content-disposition https://hibernatingrhinos.com/downloads/RavenDB%20Tools%20for%20Linux%20x64/41004
+tar xvjf RavenDB-4.1.2-linux-x64.Tools.tar.bz2
+tar xvjf RavenDB-4.1.2-linux-x64.tar.bz2
+
+
