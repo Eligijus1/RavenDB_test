@@ -20,6 +20,7 @@ fi
 
 # Installing PHP 7.2 and some extra libraries:
 sudo apt-get install -y php
+sudo apt-get install -y php-curl
 
 # Check loaded PHP modules:
 #php -m
